@@ -8,6 +8,7 @@ spring:
     password: ${DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,8 +18,21 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
+
+
+  security:
+    user:
+      name: love
+      password: love@123
+
+
 server:
   port: 8086
 
 frontend:
   url: ${FRONTEND_URL}
+
+jwt:
+  secret: yokfdkfdkjii38377ds76tdst$%LUU&W&W
+  token:
+    expiration: 8640000000000000000 # 1 day in milliseconds
