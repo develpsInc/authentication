@@ -2,6 +2,7 @@ package LIVTech.authentication.Authentication_memory_dump.Config.Jwt;
 
 import java.io.IOException;
 
+import LIVTech.authentication.Authentication_memory_dump.Config.Service.AuthenticationService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,14 +19,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.bezkoder.springjwt.security.services.UserDetailsServiceImpl;
+
 
 public class AuthTokenFilter extends OncePerRequestFilter {
-    @Autowired
+
     private JwtUtils jwtUtils;
 
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+
+    private AuthenticationService.UserDetailsServiceImpl userDetailsService;
 
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 

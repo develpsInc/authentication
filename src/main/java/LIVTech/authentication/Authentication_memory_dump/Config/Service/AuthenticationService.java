@@ -4,7 +4,12 @@ import LIVTech.authentication.Authentication_memory_dump.Config.Models.User;
 import LIVTech.authentication.Authentication_memory_dump.Config.Repository.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.transaction.Transactional;
+import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.http.HttpStatus;
@@ -22,6 +27,24 @@ public class AuthenticationService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Service
+    public class UserDetailsServiceImpl implements UserDetailsService {
+        @Autowired
+        UserRepository userRepository;
+        @Autowired
+        private EmailValidator emailValidator;
+
+        @Override
+        @Transactional
+        public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+            User user = userRepository.findByEmail(email)
+                    .orElseThrow(() -> new UsernameNotFoundException("User Not Found with email: " + email));
+
+            return UserDetailsImpl.build(user);
+        }
+
+    }
 
     private final String SECRET_KEY = System.getenv("JWT_SECRET_KEY");  // Store secret in env variables
 

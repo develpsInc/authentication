@@ -35,4 +35,11 @@ frontend:
 jwt:
   secret: yokfdkfdkjii38377ds76tdst$%LUU&W&W
   token:
-    expiration: 8640000000000000000 # 1 day in milliseconds
+    expiration: 8640000000000000000
+    # 1 day in milliseconds
+
+# App Properties
+  LIVTech:
+    app:
+      jwtSecret: "======================BezKoder=Spring==========================="
+      jwtExpirationMs: 86400000
