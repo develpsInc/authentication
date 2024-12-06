@@ -3,10 +3,7 @@ package LIVTech.authentication.authentication.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auths")
@@ -29,6 +26,24 @@ public class AuthsController {
             @RequestBody AuthenticationRequest request
     ){
         return ResponseEntity.ok(authenticationService.authenticate(request));
+    }
+
+
+    @GetMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestParam String email) {
+        return ResponseEntity.ok(authenticationService.resetPassword(email));
+    }
+
+
+//    @PostMapping("/reset-password")
+//    public String resetPassword(@RequestParam String email) {
+//
+//        return authenticationService.resetPassword(email);
+//    }
+
+    @PostMapping("/update-password")
+    public String updatePassword(@RequestParam String token, @RequestParam String newPassword) {
+        return authenticationService.updatePassword(token, newPassword);
     }
 
 

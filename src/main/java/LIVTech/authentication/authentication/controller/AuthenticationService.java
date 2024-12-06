@@ -7,10 +7,15 @@ import LIVTech.authentication.authentication.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -48,4 +53,50 @@ public class AuthenticationService {
                 .token(token)
                 .build();
     }
+
+
+    /**
+     * Handles the password reset process by generating a reset token and associating it with the user.
+     *
+     * @param email the user's email address
+     * @return a message confirming the reset token generation
+     */
+    public String resetPassword(String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        if (userOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!");
+        }
+
+        User user = userOptional.get();
+
+        // Generate a unique reset token
+        String token = UUID.randomUUID().toString();
+        user.setResetToken(token);
+        userRepository.save(user);
+
+        // Send the token via email (implement email service separately)
+        return "Reset token has been sent to your email!";
+    }
+
+    /**
+     * Updates the user's password using the reset token.
+     *
+     * @param token the reset token
+     * @param newPassword the new password to set for the user
+     * @return a message confirming the password update
+     */
+    public String updatePassword(String token, String newPassword) {
+        Optional<User> userOptional = userRepository.findByResetToken(token);
+        if (userOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid or expired reset token!");
+        }
+
+        User user = userOptional.get();
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setResetToken(null);  // Clear the reset token after password update
+        userRepository.save(user);
+
+        return "Password updated successfully!";
+    }
+
 }
