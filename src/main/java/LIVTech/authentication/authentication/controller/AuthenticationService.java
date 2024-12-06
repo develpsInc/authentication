@@ -7,7 +7,10 @@ import LIVTech.authentication.authentication.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +27,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    //private final JavaMailSender mailSender;
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
@@ -74,9 +78,27 @@ public class AuthenticationService {
         user.setResetToken(token);
         userRepository.save(user);
 
-        // Send the token via email (implement email service separately)
+        // Send the token via email
+        //sendResetEmail(email, token);
+
         return "Reset token has been sent to your email!";
     }
+
+//    private void sendResetEmail(String email, String token) {
+//        String subject = "Password Reset Request";
+//        String message = String.format(
+//                "Hello,\n\nYou have requested to reset your password. Please use the following token to reset it:\n\n%s\n\nIf you did not request a password reset, please ignore this email.",
+//                token
+//        );
+//
+//        SimpleMailMessage mailMessage = new SimpleMailMessage();
+//        mailMessage.setTo(email);
+//        mailMessage.setSubject(subject);
+//        mailMessage.setText(message);
+//        mailMessage.setFrom("elijahmottey5@gmail.com");
+//
+//        mailSender.send(mailMessage); // Send the email
+//    }
 
     /**
      * Updates the user's password using the reset token.

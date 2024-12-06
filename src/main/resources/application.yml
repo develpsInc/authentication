@@ -39,3 +39,16 @@ LIVTech:
 
     # 1 day in milliseconds
 
+#email
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: elijahmottey5@gmail.com
+    password: jomzvxwckpbivnns
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    default-encoding: UTF-8
