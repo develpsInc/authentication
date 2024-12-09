@@ -1,6 +1,10 @@
 package LIVTech.authentication.authentication.controller;
 
 
+import LIVTech.authentication.authentication.service.AuthenticationRequest;
+import LIVTech.authentication.authentication.service.AuthenticationResponse;
+import LIVTech.authentication.authentication.service.AuthenticationService;
+import LIVTech.authentication.authentication.service.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +19,7 @@ public class AuthsController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register (
-            @RequestBody LIVTech.authentication.authentication.controller.RegisterRequest request
+            @RequestBody RegisterRequest request
     ){
         return ResponseEntity.ok(authenticationService.register(request));
 

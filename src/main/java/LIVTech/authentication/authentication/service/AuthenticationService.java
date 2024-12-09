@@ -1,16 +1,13 @@
-package LIVTech.authentication.authentication.controller;
+package LIVTech.authentication.authentication.service;
 
 import LIVTech.authentication.authentication.Role.Role;
 import LIVTech.authentication.authentication.models.User;
-import LIVTech.authentication.authentication.config.JwtService;
+import LIVTech.authentication.authentication.service.jwt.JwtService;
 import LIVTech.authentication.authentication.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,4 +1,4 @@
-package LIVTech.authentication.authentication.config;
+package LIVTech.authentication.authentication.service.jwt;
 
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.FilterChain;

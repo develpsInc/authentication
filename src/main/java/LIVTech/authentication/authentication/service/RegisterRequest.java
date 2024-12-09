@@ -1,4 +1,4 @@
-package LIVTech.authentication.authentication.controller;
+package LIVTech.authentication.authentication.service;
 
 
 import lombok.AllArgsConstructor;

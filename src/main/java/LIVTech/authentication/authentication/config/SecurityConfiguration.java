@@ -1,5 +1,6 @@
 package LIVTech.authentication.authentication.config;
 
+import LIVTech.authentication.authentication.service.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
