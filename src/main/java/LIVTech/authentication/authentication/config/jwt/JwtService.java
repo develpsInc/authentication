@@ -1,4 +1,4 @@
-package LIVTech.authentication.authentication.service.jwt;
+package LIVTech.authentication.authentication.config.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

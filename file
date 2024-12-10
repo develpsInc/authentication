@@ -1,3 +1,3 @@
-DATASOURCE_URL=jdbc:postgresql://ep-blue-dew-a5t4ujt6.us-east-2.aws.neon.tech:5432/neondb?sslmode=require
-DATASOURCE_USER=neondb_owner
-DATASOURCE_PASSWORD=y6xYk1UIKnzQ
+DATASOURCE_URL=jdbc:postgresql://localhost:5432/memory_dump
+DATASOURCE_USER=postgres
+DATASOURCE_PASSWORD=love

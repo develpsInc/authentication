@@ -1,6 +1,6 @@
 package LIVTech.authentication.authentication.config;
 
-import LIVTech.authentication.authentication.service.jwt.JwtAuthenticationFilter;
+import LIVTech.authentication.authentication.config.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,13 +17,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfiguration {
 
     private final JwtAuthenticationFilter jwtAuthFilter; // Ensure it's a bean
-    private final AuthenticationProvider authenticationProvider; // Ensure it's a bean
+    private final AuthenticationProvider  authenticationProvider; // Ensure it's a bean
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").permitAll() // Update with actual endpoints
+                        .requestMatchers("/api/auths/**").permitAll() // Update with actual endpoints
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

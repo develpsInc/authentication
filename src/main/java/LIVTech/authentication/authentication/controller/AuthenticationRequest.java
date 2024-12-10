@@ -1,4 +1,4 @@
-package LIVTech.authentication.authentication.service;
+package LIVTech.authentication.authentication.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,9 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class AuthenticationResponse {
-    private  String token;
+public class AuthenticationRequest {
+    private String email;
+    private String password;
 }

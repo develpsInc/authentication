@@ -1,8 +1,11 @@
 package LIVTech.authentication.authentication.service;
 
 import LIVTech.authentication.authentication.Role.Role;
+import LIVTech.authentication.authentication.controller.AuthenticationRequest;
+import LIVTech.authentication.authentication.controller.AuthenticationResponse;
+import LIVTech.authentication.authentication.controller.RegisterRequest;
 import LIVTech.authentication.authentication.models.User;
-import LIVTech.authentication.authentication.service.jwt.JwtService;
+import LIVTech.authentication.authentication.config.jwt.JwtService;
 import LIVTech.authentication.authentication.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,5 @@
-package LIVTech.authentication.authentication.service;
+package LIVTech.authentication.authentication.controller;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,9 +8,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@Builder
 @NoArgsConstructor
-public class AuthenticationRequest {
+@Builder
+public class RegisterRequest {
+    private String firstname;
+    private String lastname;
     private String email;
     private String password;
 }

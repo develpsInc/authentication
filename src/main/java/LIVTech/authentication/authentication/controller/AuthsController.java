@@ -1,10 +1,7 @@
 package LIVTech.authentication.authentication.controller;
 
 
-import LIVTech.authentication.authentication.service.AuthenticationRequest;
-import LIVTech.authentication.authentication.service.AuthenticationResponse;
 import LIVTech.authentication.authentication.service.AuthenticationService;
-import LIVTech.authentication.authentication.service.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
