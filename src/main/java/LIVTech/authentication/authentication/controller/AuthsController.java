@@ -14,7 +14,7 @@ public class AuthsController {
     private final AuthenticationService authenticationService;
 
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity<AuthenticationResponse> register (
             @RequestBody RegisterRequest request
     ){
@@ -22,7 +22,7 @@ public class AuthsController {
 
     }
 
-    @PostMapping("/authentication")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> register (
             @RequestBody AuthenticationRequest request
     ){
