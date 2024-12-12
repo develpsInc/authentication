@@ -26,17 +26,20 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Integer id;
+
     @NotEmpty (message = "username field must not be empty")
     @NotNull (message = "username does not accept null data")
     private String username;
 
     @NotEmpty(message = "suggestion field must not be empty")
     @NotNull(message = "suggestion does not accept null data")
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
+
     @NotEmpty (message = "suggestion field must not be empty")
     @NotNull (message = "suggestion does not accept null data")
     private String password;
+
     private String resetToken;
     @Enumerated(EnumType.STRING)
     private Role role;
