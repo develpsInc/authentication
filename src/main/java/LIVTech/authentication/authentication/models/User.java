@@ -32,6 +32,7 @@ public class User implements UserDetails {
 
     @NotEmpty(message = "suggestion field must not be empty")
     @NotNull(message = "suggestion does not accept null data")
+    @Column(unique = true)
     private String email;
     @NotEmpty (message = "suggestion field must not be empty")
     @NotNull (message = "suggestion does not accept null data")
