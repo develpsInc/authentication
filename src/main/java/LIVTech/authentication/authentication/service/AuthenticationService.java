@@ -30,6 +30,9 @@ public class AuthenticationService {
     //private final JavaMailSender mailSender;
 
     public AuthenticationResponse register(RegisterRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new IllegalArgumentException("Email already exist");
+        }
         var user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -42,6 +45,8 @@ public class AuthenticationService {
                 .token(token)
                 .build();
     }
+
+
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
