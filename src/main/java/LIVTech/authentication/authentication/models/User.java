@@ -31,13 +31,13 @@ public class User implements UserDetails {
     @NotNull (message = "username does not accept null data")
     private String username;
 
-    @NotEmpty(message = "suggestion field must not be empty")
-    @NotNull(message = "suggestion does not accept null data")
+    @NotEmpty(message = "email field must not be empty")
+    @NotNull(message = "email does not accept null data")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotEmpty (message = "suggestion field must not be empty")
-    @NotNull (message = "suggestion does not accept null data")
+    @NotEmpty (message = "password field must not be empty")
+    @NotNull (message = "password does not accept null data")
     private String password;
 
     private String resetToken;
