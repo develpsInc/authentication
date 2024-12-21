@@ -41,6 +41,11 @@ public class User implements UserDetails {
     private String password;
 
     private String resetToken;
+    @OneToOne
+    @JoinColumn(
+            name = "user_id"
+    )
+    private Memories_ user;
     @Enumerated(EnumType.STRING)
     private Role role;
 
